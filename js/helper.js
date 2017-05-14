@@ -1,8 +1,11 @@
 /*
 
-This file contains all of the code running in the background that makes resumeBuilder.js possible. We call these helper functions because they support your code in this course.
+This file contains all of the code running in the background that makes resumeBuilder.js
+possible. We call these helper functions because they support your code in this course.
 
-Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes to it until you start experimenting with inserting a Google Map in Problem Set 3.
+Don't worry, you'll learn what's going on in this file throughout the course.
+You won't need to make any changes to it until you start experimenting with inserting a
+Google Map in Problem Set 3.
 
 Cameron Pittman
 */
@@ -13,21 +16,22 @@ These are HTML strings. As part of the course, you'll be using JavaScript functi
 replace the %data% placeholder text you see in them.
 */
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
-var HTMLheaderRole = '<span>%data%</span><hr>';
+var HTMLheaderRole = '<span id="role">%data%</span><hr>';
 
-var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
-var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
-var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
-var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
-var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
-var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
-var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
+var HTMLcontactGeneric = '<li class="flex-item"><span class="contact-title">%contact%</span><span class="contact-text">%data%</span></li>';
+var HTMLmobile = '<li class="flex-item"><span class="contact-text"><span class="fa fa-mobile my-color"></span>%data%</span></li>';
+var HTMLemail = '<li class="flex-item"><span class="contact-text"><span class="fa fa-envelope my-color"></span>%data%</span></li>';
+var HTMLtwitter = '<li class="flex-item"><span class="contact-text"><span class="fa fa-twitter my-color"></span>%data%</span></li>';
+var HTMLgithub = '<li class="flex-item"><span class="contact-text"><a class="contact-link" href="https://github.com/#" target="_blank"><span class="fa fa-github-alt my-color"></span>%data%</a></span></li>';
+var HTMLlinkedin = '<li class="flex-item"><span class="contact-text"><a class="contact-link" href="https://www.linkedin.com/in/#" target="_blank"><span class="fa fa-linkedin my-color"></span>%data%</a></span></li>';
+var HTMLwebsite = '<li class="flex-item"><span class="contact-text"><a class="contact-link" href="#"><span class="fa fa-home my-color"></span>%data%</a></span></li>';
+var HTMLlocation = '<li class="flex-item"><span class="contact-text"><span class="fa fa-map-marker my-color"></span>%data%</span></li>';
 
-var HTMLbioPic = '<img src="%data%" class="biopic">';
-var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
+var HTMLbioPic = '<div class="biopic-container"><img src="%data%" class="biopic"></div>';
+var HTMLwelcomeMsg = '<span class="welcome-message"><i class="fa fa-quote-left fa-pull-left" aria-hidden="true"></i>%data%<i class="fa fa-quote-right fa-pull-right" aria-hidden="true"></i></span>';
 
-var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-column"></ul>';
-var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
+var HTMLskillsStart = '<div class="skills-container"><h3 id="skills-title"><span class="fa fa-cogs my-color"></span>Skills at a Glance</h3><ul id="skills"></ul></div>';
+var HTMLskills = '<li class="flex-item"><span class="fa fa-check-circle my-color"></span><span class="skills-text">%data%</span></li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
 var HTMLworkEmployer = '<a href="#">%data%';
@@ -178,6 +182,7 @@ function initializeMap() {
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
+      infowindow.open(map, marker);
     });
 
     // this is where the pin actually gets added to the map.
@@ -239,11 +244,11 @@ Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   //Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+  map.fitBounds(mapBounds);
+});
