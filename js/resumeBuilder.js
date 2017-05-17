@@ -128,7 +128,7 @@ var bio = {
                 formattedskills = HTMLskills.replace("%data%", skill);
                 $("#skills").append(formattedskills);
             });
-        };
+        }
     }
 };
 
