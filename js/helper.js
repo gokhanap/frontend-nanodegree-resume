@@ -28,7 +28,7 @@ var HTMLwebsite = '<li class="flex-item"><span class="contact-text"><a class="co
 var HTMLlocation = '<li class="flex-item"><span class="contact-text"><span class="fa fa-map-marker my-color"></span>%data%</span></li>';
 
 var HTMLbioPic = '<div class="biopic-container"><img src="%data%" class="biopic"></div>';
-var HTMLwelcomeMsg = '<span class="welcome-message"><i class="fa fa-quote-left fa-pull-left" aria-hidden="true"></i>%data%<i class="fa fa-quote-right fa-pull-right" aria-hidden="true"></i></span>';
+var HTMLwelcomeMessage = '<span class="welcome-message"><i class="fa fa-quote-left fa-pull-left" aria-hidden="true"></i>%data%<i class="fa fa-quote-right fa-pull-right" aria-hidden="true"></i></span>';
 
 var HTMLskillsStart = '<div class="skills-container"><h3 id="skills-title"><span class="fa fa-cogs my-color"></span>Skills at a Glance</h3><ul id="skills"></ul></div>';
 var HTMLskills = '<li class="flex-item"><span class="fa fa-check-circle my-color"></span><span class="skills-text">%data%</span></li>';

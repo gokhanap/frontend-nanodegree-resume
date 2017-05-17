@@ -50,19 +50,19 @@ var projects = {
             "title": "Project1",
             "dates": "2017",
             "description": "International Anadolu Calligraphy & Typography Event Website",
-            "images": "images/caltyp.jpg"
-        }/*,
-        {
-            "title": "Project2",
-            "dates": "2014",
-            "description": "description",
-            "images": "images/197x148.gif"
+            "images": ["images/caltyp.jpg"]
         },
         {
+            "title": "Project2",
+            "dates": "2017",
+            "description": "Classic Arcade Game Clone",
+            "images": ["images/197x148.gif", "images/197x148.gif"]
+        }/*,
+        {
             "title": "Project3",
-            "dates": "2013",
-            "description": "description",
-            "images": "images/197x148.gif"
+            "dates": "2017",
+            "description": "Neighborhood Map",
+            "images": ["images/197x148.gif", "images/197x148.gif"]
         }*/
     ],
 
@@ -74,7 +74,13 @@ var projects = {
             formattedHTMLprojectDates = HTMLprojectDates.replace("%data%", x.dates);
             formattedHTMLprojectDescription = HTMLprojectDescription.replace("%data%", x.description);
             formattedHTMLprojectImage = HTMLprojectImage.replace("%data%", x.images);
-            $(".project-entry:last").append(formattedHTMLprojectTitle + formattedHTMLprojectDates + formattedHTMLprojectDescription + formattedHTMLprojectImage);
+
+            x.images.forEach(function(image) {
+            formattedHTMLprojectImage = HTMLprojectImage.replace("%data%", image);
+            $(".project-entry:last").append(formattedHTMLprojectImage);
+            });
+
+            $(".project-entry:last").append(formattedHTMLprojectTitle + formattedHTMLprojectDates + formattedHTMLprojectDescription);
         });
     }
 };
@@ -83,7 +89,7 @@ var projects = {
 var bio = {
     "name": "Gökhan Apaydın",
     "role": "Front-end Web Developer",
-    "welcomeMsg": "Hello! My name is Gökhan.</br>I am a front-end web developer</br>equiped with design skills.",
+    "welcomeMessage": "Hello! My name is Gökhan.</br>I am a front-end web developer</br>equiped with design skills.",
     "biopic": "images/propic.jpg",
     "contacts": {
         "mobile": "",
@@ -99,51 +105,29 @@ var bio = {
     display: function(x) {
 
         formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-        $("#header").prepend(formattedRole);
-
         formattedName = HTMLheaderName.replace("%data%", bio.name);
-        $("#header").prepend(formattedName);
+        $("#header").prepend(formattedName + formattedRole);
 
         formattedContactEmail = HTMLemail.replace("%data%", bio.contacts.email);
-        $("#topContacts").append(formattedContactEmail);
-        $("#footerContacts").append(formattedContactEmail);
-
         formattedContactGithub = HTMLgithub.replace("%data%", bio.contacts.github);
         formattedContactGithub = formattedContactGithub.replace("#", bio.contacts.github);
-        $("#topContacts").append(formattedContactGithub);
-        $("#footerContacts").append(formattedContactGithub);
-
         formattedContactLinkedin = HTMLlinkedin.replace("%data%", bio.contacts.linkedin);
         formattedContactLinkedin = formattedContactLinkedin.replace("#", bio.contacts.linkedin);
-        $("#topContacts").append(formattedContactLinkedin);
-        $("#footerContacts").append(formattedContactLinkedin);
-
         formattedContactWebsite = HTMLwebsite.replace("%data%", bio.contacts.website.slice(11, 28));
         formattedContactWebsite = formattedContactWebsite.replace("#", bio.contacts.website);
-        $("#topContacts").append(formattedContactWebsite);
-        $("#footerContacts").append(formattedContactWebsite);
-
         formattedContactLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-        $("#topContacts").append(formattedContactLocation);
-        $("#footerContacts").append(formattedContactLocation);
+        $("#topContacts, #footerContacts").append(formattedContactEmail + formattedContactGithub + formattedContactLinkedin + formattedContactWebsite + formattedContactLocation);
 
         formattedbioPic = HTMLbioPic.replace("%data%", bio.biopic);
-        $("#bio").append(formattedbioPic);
+        formattedWelcomeMessage = HTMLwelcomeMessage.replace("%data%", bio.welcomeMessage);
+        $("#bio").append(formattedbioPic + formattedWelcomeMessage);
 
-        formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
-        $("#bio").append(formattedWelcomeMsg);
-        /*
-        formattedSkills = HTMLskills.replace("%data%", bio.skills);
-        formattedtwitter = HTMLtwitter.replace("%data%", bio.twitter);
-        */
         if (bio.skills.length > 0) {
             $("#bio").append(HTMLskillsStart);
-            formattedskills = HTMLskills.replace("%data%", bio.skills[0]);
-            $("#skills").append(formattedskills);
-            formattedskills = HTMLskills.replace("%data%", bio.skills[1]);
-            $("#skills").append(formattedskills);
-            formattedskills = HTMLskills.replace("%data%", bio.skills[2]);
-            $("#skills").append(formattedskills);
+            bio.skills.forEach(function(skill) {
+                formattedskills = HTMLskills.replace("%data%", skill);
+                $("#skills").append(formattedskills);
+            });
         };
     }
 };
