@@ -4,29 +4,29 @@ var work = {
             "employer": "Anadolu University",
             "title": "Research Assistant",
             "location": "Eskişehir",
-            "dates": "2014-2017",
-            "description": "Research assistant at graphic design department. Assisted typography, interactive graphic design and web design courses."
+            "dates": "02/2014–06/2017",
+            "description": "• Executed a type design project which consists of 7 fonts and 2464 glyphs.<br/>• Assisted typography, interactive graphic design and web design courses."
         },
         {
             "employer": "Akira Works",
             "title": "Art Director",
             "location": "Eskişehir",
-            "dates": "2012-2014",
-            "description": "Responsible for companies design project and coordination with clients. Worked on print and motion graphic projects."
+            "dates": "09/2012–01/2014",
+            "description": "• Directed design project management and coordination with clients.<br/>• Conceptualized design projects on print and digital media."
         },
         {
             "employer": "Gap Creative",
             "title": "Graphic Designer",
             "location": "Eskişehir",
-            "dates": "2011-2012",
-            "description": "Worked mostly on print media. Package design, poster, corporate identity materials."
+            "dates": "06/2011–08/2012",
+            "description": "• Designed package designs, posters and corporate identity materials.<br/>• Collaborated with a large group of designers on “City Memorial Museum” project."
         },
         {
             "employer": "Armagraf",
             "title": "Graphic Designer",
             "location": "İstanbul",
-            "dates": "2007-2008",
-            "description": "Worked mostly on web design projects. Designed web interfaces with Adobe Flash."
+            "dates": "04/2006–09/2007",
+            "description": "• Designed print materials considering customer’s needs.<br/>• Designed web interfaces collaborating with web developer team."
         }
     ],
 
@@ -99,7 +99,7 @@ var bio = {
         "website": "http://www.gokhanapaydin.com/",
         "location": "Eskişehir, Turkey"
     },
-    "skills": ["HTML/CSS/Javascript", "Adobe Illustrator/Indesign/Photoshop", "Git/Github"],
+    "skills": ["HTML5/CSS3/Javascript ES6", "Adobe Illustrator/Indesign/Photoshop", "Git/Github", "React (learning...)"],
 
     //DISPLAY FUNCTION FOR BIO
     display: function(x) {
@@ -138,7 +138,7 @@ var education = {
             "name": "Anadolu University",
             "location": "Eskişehir",
             "degree": "Bachelors",
-            "dates": "2007-2011",
+            "dates": "09/2007–06/2011",
             "url": "http://www.anadolu.edu.tr/en/",
             "majors": ["Graphic Design"]
         },
@@ -146,23 +146,25 @@ var education = {
             "name": "Anadolu University",
             "location": "Eskişehir",
             "degree": "Master",
-            "dates": "2014-2017",
+            "dates": "02/2014–01/2017",
             "url": "http://www.anadolu.edu.tr/en/",
             "majors": ["Graphic Design"]
         }
     ],
     "onlineCourses": [{
             "title": "Front-end Developer Nanodegree Program",
+            "location": "Remote",
             "school": "Udacity",
-            "dates": "2017",
-            "url": "http://www.udacity.com/"
-        }/*, TODO: planned for future
+            "dates": "03/2017–07/2017",
+            "url": "https://www.udacity.com/degrees/front-end-web-developer-nanodegree--nd001"
+        },
         {
-            "title": "Full stack",
+            "title": "React Nanodegree Program",
+            "location": "Remote",
             "school": "Udacity",
-            "dates": "2017",
-            "url": "http://www.udacity.com/"
-        }*/
+            "dates": "07/2017–present",
+            "url": "https://www.udacity.com/degrees/react-nanodegree--nd019"
+        }
     ],
 
     //DISPLAY FUNCTION FOR EDUCATION
@@ -195,7 +197,7 @@ var education = {
 
 work.display();
 
-projects.display();
+//projects.display();
 
 bio.display();
 
