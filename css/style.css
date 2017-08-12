@@ -13,6 +13,8 @@ h6 {
     margin: 0;
     font-family: "Roboto", sans-serif;
     color: #666;
+    font-weight: 300;
+    line-height: 1.9em;
 }
 #main {
     max-width: 960px;
@@ -65,29 +67,20 @@ h5 {
 hr {
     border-top: 1px dotted #8c8b8b;
 }
-.date-text {
-    font-style: italic;
+.location-date-text {
     font-size: 14px;
     color: #999;
-    line-height: 16px;
-    float: left;
-}
-.location-text {
-    font-style: italic;
-    font-size: 14px;
-    color: #999;
-    line-height: 16px;
-    float: right;
+    line-height: 10px;
+    padding-bottom: 5px;
 }
 p {
     font-size: 14px;
     color: #666;
-    line-height: 21px;
 }
 a {
     color: #3cc;
     text-decoration: none;
-    display: block;
+    display: inline-block;
 }
 .contact-link {
     color: #666;
@@ -102,6 +95,9 @@ a {
 }
 .uppercase {
     text-transform: uppercase;
+}
+.title {
+    font-weight: 400;
 }
 .gray-text {
     color: #666;
@@ -149,7 +145,11 @@ a {
     flex-wrap: nowrap;
     padding: 1px;
 }
-.flex-item {} .center-content {
+.flex-item {
+    padding: 0;
+}
+
+.center-content {
     padding-top: 2.5%;
 }
 ul {
@@ -244,7 +244,7 @@ span {
         font-size: 0.7em;
 }
 }
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 665px) {
     .flex-box {
         display: -webkit-flex;
         display: flex;
@@ -261,6 +261,9 @@ span {
     #role {
         display: block;
         padding-left: 5%;
+    }
+    .location-date-text {
+        margin: 0 auto;
     }
 }
 #map {

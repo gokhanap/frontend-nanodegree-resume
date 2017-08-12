@@ -12,7 +12,7 @@ var work = {
             "title": "Art Director",
             "location": "Eskişehir",
             "dates": "09/2012–01/2014",
-            "description": "• Directed design project management and coordination with clients.<br/>• Conceptualized design projects on print and digital media."
+            "description": "• Directed design project management for a premium fitness club over one year.<br/>• Conceptualized design projects for print and digital media to various clients."
         },
         {
             "employer": "Gap Creative",
@@ -89,7 +89,7 @@ var projects = {
 var bio = {
     "name": "Gökhan Apaydın",
     "role": "Front-end Web Developer",
-    "welcomeMessage": "Hello! My name is Gökhan.</br>I am a front-end web developer</br>equiped with design skills.",
+    "welcomeMessage": "Hello! My name is Gökhan.<br>I am a front-end web developer<br> with latest coding skills and<br>extensive design background.",
     "biopic": "images/propic.jpg",
     "contacts": {
         "mobile": "",
@@ -97,9 +97,11 @@ var bio = {
         "github": "gokhanap",
         "linkedin": "gapaydin",
         "website": "http://www.gokhanapaydin.com/",
-        "location": "Eskişehir, Turkey"
+        "location": "Eskişehir, Turkey",
+        "locationLink": "https://goo.gl/maps/zkg6a2q7b9x"
     },
-    "skills": ["HTML5/CSS3/Javascript ES6", "Adobe Illustrator/Indesign/Photoshop", "Git/Github", "React (learning...)"],
+    "skills": ["HTML5/CSS3/Javascript ES6", "Adobe Illustrator/Indesign/Photoshop", "Git/Github"],
+    "skillsNovice": ["React (learning...)"],
 
     //DISPLAY FUNCTION FOR BIO
     display: function(x) {
@@ -109,6 +111,7 @@ var bio = {
         $("#header").prepend(formattedName + formattedRole);
 
         formattedContactEmail = HTMLemail.replace("%data%", bio.contacts.email);
+        formattedContactEmail = formattedContactEmail.replace("#", bio.contacts.email);
         formattedContactGithub = HTMLgithub.replace("%data%", bio.contacts.github);
         formattedContactGithub = formattedContactGithub.replace("#", bio.contacts.github);
         formattedContactLinkedin = HTMLlinkedin.replace("%data%", bio.contacts.linkedin);
@@ -116,17 +119,26 @@ var bio = {
         formattedContactWebsite = HTMLwebsite.replace("%data%", bio.contacts.website.slice(11, 28));
         formattedContactWebsite = formattedContactWebsite.replace("#", bio.contacts.website);
         formattedContactLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+        formattedContactLocation = formattedContactLocation.replace("#", bio.contacts.locationLink);
         $("#topContacts, #footerContacts").append(formattedContactEmail + formattedContactGithub + formattedContactLinkedin + formattedContactWebsite + formattedContactLocation);
 
         formattedbioPic = HTMLbioPic.replace("%data%", bio.biopic);
         formattedWelcomeMessage = HTMLwelcomeMessage.replace("%data%", bio.welcomeMessage);
         $("#bio").append(formattedbioPic + formattedWelcomeMessage);
 
+        // Add skills
         if (bio.skills.length > 0) {
             $("#bio").append(HTMLskillsStart);
             bio.skills.forEach(function(skill) {
                 formattedskills = HTMLskills.replace("%data%", skill);
                 $("#skills").append(formattedskills);
+            });
+        }
+        // Add novice skills
+        if (bio.skillsNovice.length > 0) {
+            bio.skillsNovice.forEach(function(skill) {
+                formattedskillsNovice = HTMLskillsNovice.replace("%data%", skill);
+                $("#skills").append(formattedskillsNovice);
             });
         }
     }
@@ -137,38 +149,51 @@ var education = {
     "schools": [{
             "name": "Anadolu University",
             "location": "Eskişehir",
-            "degree": "Bachelors",
-            "dates": "09/2007–06/2011",
+            "degree": "Master of Arts",
+            "dates": "02/2014–01/2017",
             "url": "http://www.anadolu.edu.tr/en/",
             "majors": ["Graphic Design"]
         },
         {
             "name": "Anadolu University",
             "location": "Eskişehir",
-            "degree": "Master",
-            "dates": "02/2014–01/2017",
+            "degree": "Bachelor of Arts",
+            "dates": "09/2007–06/2011",
             "url": "http://www.anadolu.edu.tr/en/",
             "majors": ["Graphic Design"]
         }
     ],
     "onlineCourses": [{
-            "title": "Front-end Developer Nanodegree Program",
-            "location": "Remote",
-            "school": "Udacity",
-            "dates": "03/2017–07/2017",
-            "url": "https://www.udacity.com/degrees/front-end-web-developer-nanodegree--nd001"
-        },
-        {
             "title": "React Nanodegree Program",
             "location": "Remote",
             "school": "Udacity",
             "dates": "07/2017–present",
             "url": "https://www.udacity.com/degrees/react-nanodegree--nd019"
+        },
+        {
+            "title": "Front-end Developer Nanodegree Program",
+            "location": "Remote",
+            "school": "Udacity",
+            "dates": "03/2017–07/2017",
+            "url": "https://www.udacity.com/degrees/front-end-web-developer-nanodegree--nd001"
         }
     ],
 
     //DISPLAY FUNCTION FOR EDUCATION
     display: function() {
+
+        //DISPLAYS ONLINECOURSES ARRAY
+        // $("#education").append(HTMLonlineClasses);
+        education.onlineCourses.forEach(function(onlineCourse) {
+            $("#education").append(HTMLschoolStart);
+            formattedonlineSchool = HTMLonlineSchool.replace("%data%", onlineCourse.school);
+            formattedonlineSchool = formattedonlineSchool.replace("#", onlineCourse.url);
+            formattedonlineTitle = HTMLonlineTitle.replace("%data%", onlineCourse.title);
+            formattedonlineDates = HTMLonlineDates.replace("%data%", onlineCourse.dates);
+            formattedonlineLocation = HTMLonlineLocation.replace("%data%", onlineCourse.location);
+            formattedonlineURL = HTMLonlineURL.replace("%data%", onlineCourse.url);
+            $(".education-entry:last").append(formattedonlineSchool + formattedonlineTitle + formattedonlineLocation + formattedonlineDates);
+        });
 
         //DISPLAYS SCHOOLS ARRAY
         education.schools.forEach(function(school) {
@@ -176,21 +201,10 @@ var education = {
             formattedschoolName = HTMLschoolName.replace("%data%", school.name);
             formattedschoolName = formattedschoolName.replace("#", school.url);
             formattedschoolDegree = HTMLschoolDegree.replace("%data%", school.degree);
+            formattedschoolMajor = HTMLschoolMajor.replace("%data%", school.majors);
             formattedschoolDates = HTMLschoolDates.replace("%data%", school.dates);
             formattedschoolLocation = HTMLschoolLocation.replace("%data%", school.location);
-            formattedschoolMajor = HTMLschoolMajor.replace("%data%", school.majors);
-            $(".education-entry:last").append(formattedschoolName + formattedschoolDegree + formattedschoolDates + formattedschoolMajor + formattedschoolLocation);
-        });
-
-        //DISPLAYS ONLINECOURSES ARRAY
-        $("#education").append(HTMLonlineClasses);
-        education.onlineCourses.forEach(function(onlineCourse) {
-            $("#education").append(HTMLschoolStart);
-            formattedonlineTitle = HTMLonlineTitle.replace("%data%", onlineCourse.title);
-            formattedonlineSchool = HTMLonlineSchool.replace("%data%", onlineCourse.school);
-            formattedonlineDates = HTMLonlineDates.replace("%data%", onlineCourse.dates);
-            formattedonlineURL = HTMLonlineURL.replace("%data%", onlineCourse.url);
-            $(".education-entry:last").append(formattedonlineTitle + formattedonlineSchool + formattedonlineDates + formattedonlineURL);
+            $(".education-entry:last").append(formattedschoolName + formattedschoolDegree + formattedschoolMajor + formattedschoolLocation + formattedschoolDates);
         });
     }
 };
